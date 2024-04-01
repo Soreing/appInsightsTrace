@@ -164,7 +164,7 @@ func (ins *AppInsightsCore) TraceRequest(
 	name := fmt.Sprintf("%s %s", method, path)
 	tele := appinsights.RequestTelemetry{
 		Name:         name,
-		Url:          fmt.Sprintf("%s%s", path, query),
+		Url:          fmt.Sprintf("%s?%s", path, query),
 		Id:           rid,
 		Duration:     eventTimestamp.Sub(startTimestamp),
 		ResponseCode: strconv.Itoa(statusCode),
@@ -573,7 +573,7 @@ func (ins *AppInsightsCore) TraceRequestWithIds(
 	name := fmt.Sprintf("%s %s", method, path)
 	tele := appinsights.RequestTelemetry{
 		Name:         name,
-		Url:          fmt.Sprintf("%s%s", path, query),
+		Url:          fmt.Sprintf("%s?%s", path, query),
 		Id:           requestId,
 		Duration:     eventTimestamp.Sub(startTimestamp),
 		ResponseCode: strconv.Itoa(statusCode),
